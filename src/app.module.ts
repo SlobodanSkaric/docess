@@ -3,8 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/dataBaseConfig';
-import { AdministratorModuleModule } from './modules/administrator-module/administrator-module';
-import { UserModuleModule } from './modules/user-module/user-module';
+import { AdministratorModule } from './modules/administrator-module/administrator-module';
+import { UserModule } from './modules/user-module/user-module';
 import { Administrators } from './entities/Administrators';
 import { Users } from './entities/Users';
 import { Delivered } from './entities/Delivered';
@@ -44,8 +44,8 @@ import { WorkShifts } from './entities/WorkShifts';
         UserShifts,
         WorkShifts
     ]),
-    AdministratorModuleModule,
-    UserModuleModule,
+    AdministratorModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

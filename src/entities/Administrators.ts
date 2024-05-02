@@ -21,6 +21,9 @@ export class Administrators {
   @Column("varchar", { name: "status", length: 50, default: () => "'0'" })
   status: string;
 
+  @Column("varchar", { name: "password", length: 256 })
+  password: string;
+
   @Column("timestamp", {
     name: "data_create",
     default: () => "CURRENT_TIMESTAMP",

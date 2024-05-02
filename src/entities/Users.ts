@@ -21,6 +21,9 @@ export class Users {
   @Column("varchar", { name: "phonenumber", length: 125, default: () => "'0'" })
   phonenumber: string;
 
+  @Column("varchar", { name: "password", length: 256})
+  password: string;
+
   @Column("tinyint", { name: "status", width: 1, default: () => "'1'" })
   status: boolean;
 
