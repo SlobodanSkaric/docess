@@ -15,14 +15,28 @@ export class AdministratorService {
         return "This is administrator";
     }
 
-    async getAdminstratroForEmail(email: string): Promise<Administrators | ApiReponse>{
+    async getAdminstratroForEmail(email: string): Promise<Administrators | null>{
         const checkAdmin = await this.administrator.findOne({ where: { email: email } });
         
         if(!checkAdmin){
-            return new ApiReponse("error", -10002, "Incorect email");
+            return null;
         }
 
         return checkAdmin;
+    }
+
+    async checkPassword(email: string, password: string): Promise<true | false>{
+        const getAdmin = await this.administrator.findOne({ where: { email: email }});
+
+        const passwordHashObj = crypto.createHash("SHA512");
+        passwordHashObj.update(password);
+        const passwordHash = passwordHashObj.digest("hex").toUpperCase();
+
+        if(passwordHash !== getAdmin.password){
+            return false;
+        }
+
+        return true;
     }
 
     async createAdministrator(data: AddAdministratorDto): Promise<GetAdministratorDto | ApiReponse >{

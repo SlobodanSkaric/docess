@@ -1,0 +1,1 @@
+export const jwtSicret = "asgjGAMGMjng16sdg156sdfhonjsohfklšsdmcxigđweo15gjknycčbn18mgjfjmajnp";

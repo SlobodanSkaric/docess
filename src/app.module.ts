@@ -13,8 +13,6 @@ import { IndividualDocumentation } from './entities/IndividualDocumentation';
 import { ManagerToken } from './entities/ManagerToken';
 import { UserShifts } from './entities/UserShifts';
 import { WorkShifts } from './entities/WorkShifts';
-import { AuthController } from './auth/auth/auth.controller';
-import { AuthController } from './controllers/auth/auth/auth.controller';
 import { AuthModule } from './modules/auth/auth/auth.module';
 
 @Module({

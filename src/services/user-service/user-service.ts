@@ -15,14 +15,28 @@ export class UserService {
         return "This is users service";
     }
 
-    async getUSerForEmail(email: string): Promise<Users | ApiReponse>{
+    async getUserForEmail(email: string): Promise<Users | null>{
         const checkUser = await this.user.findOne({ where: { email: email } });
         
         if(!checkUser){
-            return new ApiReponse("error", -10002, "Incorect email");
+            return null;
         }
 
         return checkUser;
+    }
+
+    async checkPassword(email: string, password: string): Promise<true | false>{
+        const getUser = await this.getUserForEmail(email);
+        console.log()
+        const passwordHashObj = crypto.createHash("SHA512");
+        passwordHashObj.update(password);
+        const passwordHash = passwordHashObj.digest("hex").toUpperCase();
+
+        if(passwordHash !== getUser.password){
+            return false;
+        }
+
+        return true;
     }
 
     async createUser(data: AddUserDto): Promise<GetUserDto | ApiReponse>{
