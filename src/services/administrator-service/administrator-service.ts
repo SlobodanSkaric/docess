@@ -15,6 +15,16 @@ export class AdministratorService {
         return "This is administrator";
     }
 
+    async getAdminstratroForEmail(email: string): Promise<Administrators | ApiReponse>{
+        const checkAdmin = await this.administrator.findOne({ where: { email: email } });
+        
+        if(!checkAdmin){
+            return new ApiReponse("error", -10002, "Incorect email");
+        }
+
+        return checkAdmin;
+    }
+
     async createAdministrator(data: AddAdministratorDto): Promise<GetAdministratorDto | ApiReponse >{
         const findAdministrator = await this.administrator.findOne({where: {email: data.email}});
 

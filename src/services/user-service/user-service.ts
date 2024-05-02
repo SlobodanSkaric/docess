@@ -15,6 +15,16 @@ export class UserService {
         return "This is users service";
     }
 
+    async getUSerForEmail(email: string): Promise<Users | ApiReponse>{
+        const checkUser = await this.user.findOne({ where: { email: email } });
+        
+        if(!checkUser){
+            return new ApiReponse("error", -10002, "Incorect email");
+        }
+
+        return checkUser;
+    }
+
     async createUser(data: AddUserDto): Promise<GetUserDto | ApiReponse>{
         const findUser = await this.user.findOne({where: {email: data.email}});
 
