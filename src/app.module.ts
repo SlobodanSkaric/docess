@@ -14,6 +14,9 @@ import { ManagerToken } from './entities/ManagerToken';
 import { UserShifts } from './entities/UserShifts';
 import { WorkShifts } from './entities/WorkShifts';
 import { AuthModule } from './modules/auth/auth/auth.module';
+import { DocumentationController } from './controllers/documentation/documentation.controller';
+import { DocumentationModule } from './modules/documentation/documentation.module';
+import { DocumentationService } from './services/documentation/documentation.service';
 
 @Module({
   imports: [
@@ -48,7 +51,10 @@ import { AuthModule } from './modules/auth/auth/auth.module';
     AdministratorModule,
     UserModule,
     AuthModule,
+    DocumentationModule,
   ],
+  controllers: [DocumentationController],
+  providers: [DocumentationService],
  /*  controllers: [AppController, AuthController],
   providers: [AppService], */
 })

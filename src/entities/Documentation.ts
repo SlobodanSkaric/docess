@@ -20,7 +20,7 @@ export class Documentation {
   userId: number;
 
   @Column("int", { name: "documentation_number", default: () => "'0'" })
-  documentationNumber: number;
+  documentationNumber: string;
 
   @Column("enum", { name: "work_shift", enum: ["1", "2", "3"] })
   workShift: "1" | "2" | "3";
