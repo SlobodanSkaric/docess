@@ -44,12 +44,8 @@ export class DocumentationService {
     }
 
     async getForUser(userId: number): Promise<Documentation[] | null>{
-        const documentationSelect = await this.documentation.find(
-            { 
-                where: { userId: userId } ,
-                relations: ["user"]
-            });
-
+        const documentationSelect = await this.documentation.createQueryBuilder("documentation").leftJoinAndSelect("documentation.user", "user").where("documentation.user_id = :id", {id: userId}).select(["documentation", "user.firstname", "user.lastname", "user.email"]).getMany()
+             
         if(!documentationSelect){
             return null;
         }
