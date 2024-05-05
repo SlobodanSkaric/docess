@@ -19,7 +19,7 @@ export class DocumentationController {
     }
 
     @Get(":documentationNumber")
-    async getDocumentationForNumber(@Param("documentationNumber") documentationNumber: string): Promise<Documentation | null>{
+    async getDocumentationForNumber(@Param("documentationNumber") documentationNumber: string): Promise<Documentation[] | null>{
         return await this.documentation.getForNumber(documentationNumber);
     }
 
