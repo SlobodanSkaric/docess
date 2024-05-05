@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -17,6 +17,9 @@ import { AuthModule } from './modules/auth/auth/auth.module';
 import { DocumentationController } from './controllers/documentation/documentation.controller';
 import { DocumentationModule } from './modules/documentation/documentation.module';
 import { DocumentationService } from './services/documentation/documentation.service';
+import { AuthMiddleware } from './middlewares/auth.middleware';
+import { AdministratorService } from './services/administrator-service/administrator-service';
+import { UserService } from './services/user-service/user-service';
 
 @Module({
   imports: [
@@ -53,9 +56,13 @@ import { DocumentationService } from './services/documentation/documentation.ser
     AuthModule,
     DocumentationModule,
   ],
-  controllers: [DocumentationController],
-  providers: [DocumentationService],
- /*  controllers: [AppController, AuthController],
-  providers: [AppService], */
+  /* providers:[
+    AdministratorService,
+    UserService
+  ],
+  exports:[
+    AdministratorModule,
+    UserModule,
+  ] */
 })
 export class AppModule {}

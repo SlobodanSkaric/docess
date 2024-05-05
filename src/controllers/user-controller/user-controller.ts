@@ -5,7 +5,7 @@ import { GetUserDto } from 'src/dto/user/get.user.dto';
 import { Users } from 'src/entities/Users';
 import { UserService } from 'src/services/user-service/user-service';
 
-@Controller('user')
+@Controller('api/user')
 export class UserController {
     constructor(private user: UserService){}
 

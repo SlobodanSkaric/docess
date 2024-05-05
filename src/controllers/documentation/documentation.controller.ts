@@ -4,7 +4,7 @@ import { DocumentationDto } from 'src/dto/documentation/documentation.dto';
 import { Documentation } from 'src/entities/Documentation';
 import { DocumentationService } from 'src/services/documentation/documentation.service';
 
-@Controller('documentation')
+@Controller('api/documentation')
 export class DocumentationController {
     constructor(private readonly documentation: DocumentationService){}
 

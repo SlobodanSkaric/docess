@@ -7,6 +7,7 @@ import { AdministratorService } from 'src/services/administrator-service/adminis
 @Module({
     controllers: [AdministratorController],
     providers: [AdministratorService],
+    exports:[AdministratorService],
     imports:[TypeOrmModule.forFeature([Administrators])]
 })
 export class AdministratorModule {}

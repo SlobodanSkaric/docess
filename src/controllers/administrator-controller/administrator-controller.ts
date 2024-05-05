@@ -7,7 +7,7 @@ import { Administrators } from 'src/entities/Administrators';
 import { Users } from 'src/entities/Users';
 import { AdministratorService } from 'src/services/administrator-service/administrator-service';
 
-@Controller('administrator')
+@Controller('api/administrator')
 export class AdministratorController {
     constructor(private adminstrator: AdministratorService){}
 
