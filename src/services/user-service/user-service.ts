@@ -15,6 +15,16 @@ export class UserService {
         return "This is users service";
     }
 
+    async getUserForId(id: number){
+        const checkedUser = await this.user.findOne({ where: { userId: id} });
+
+        if(!checkedUser){
+            return null;
+        }
+
+        return checkedUser;
+    }
+
     async getUserForEmail(email: string): Promise<Users | null>{
         const checkUser = await this.user.findOne({ where: { email: email } });
         

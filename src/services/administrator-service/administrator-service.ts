@@ -15,6 +15,16 @@ export class AdministratorService {
         return "This is administrator";
     }
 
+    async getAdminstratorForId(id: number): Promise<Administrators | null>{
+        const getAdministrator = await this.administrator.findOne({ where: { adminstratorId: id } });
+
+        if(!getAdministrator){
+            return null;
+        }
+
+        return getAdministrator;
+    }
+
     async getAdminstratroForEmail(email: string): Promise<Administrators | null>{
         const checkAdmin = await this.administrator.findOne({ where: { email: email } });
         
